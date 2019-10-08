@@ -1,0 +1,57 @@
+// 表明是应用程序的插件
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+// android闭包
+android {
+    //指定项目的编译版本
+    compileSdkVersion 29
+    defaultConfig {
+        //指定项目的包名
+        applicationId "com.wzb.ratioseekbartest"
+        //项目最低兼容的android版本
+        minSdkVersion 21
+        //项目最高兼容的android版本
+        targetSdkVersion 29
+        //项目版本号
+        versionCode 1
+        //项目版本名
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            // 指定是否对项目的代码进行混淆
+            minifyEnabled false
+            // 指定混淆时使用的规则文件
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // Butterknife requires Java 8.
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+// dependencies的详解
+//https://developer.android.com/studio/build/dependencies.html?hl=zh-cn
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.navigation:navigation-fragment:2.0.0'
+    implementation 'androidx.navigation:navigation-ui:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    implementation 'com.qmuiteam:qmui:1.4.0'
+
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+
+
+}
